@@ -9,9 +9,13 @@ gen/
 local.properties
 
 # Android Studio
+*.iml
 .idea
 .gradle
 build/
+.navigation
+captures/
+output.json 
 
 # Vim and ctags
 tags
