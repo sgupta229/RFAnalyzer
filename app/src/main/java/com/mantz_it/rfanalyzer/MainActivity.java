@@ -105,8 +105,8 @@ public class MainActivity extends AppCompatActivity implements IQSourceInterface
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.activity_main);
-		setContentView(R.layout.activity_home);
+		setContentView(R.layout.activity_main);
+		//setContentView(R.layout.activity_home);
 		this.savedInstanceState = savedInstanceState;
 
 		// Set default Settings on first run:
