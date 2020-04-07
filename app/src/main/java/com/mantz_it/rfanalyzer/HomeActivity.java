@@ -38,10 +38,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 switch (item.getItemId()) {
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        //overridePendingTransition(0,0);
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.addComm:
                         startActivity(new Intent(getApplicationContext(), AddComm.class));
+                        overridePendingTransition(0,0);
                         break;
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));

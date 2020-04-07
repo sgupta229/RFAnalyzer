@@ -21,17 +21,18 @@ public class AddComm extends AppCompatActivity {
         setContentView(R.layout.activity_add_comm);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.addComm);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        //overridePendingTransition(0,0);
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.addComm:
                         startActivity(new Intent(getApplicationContext(), AddComm.class));
+                        overridePendingTransition(0,0);
                         break;
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
