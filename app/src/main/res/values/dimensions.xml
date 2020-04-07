@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space">40sp</dimen>
+    <dimen name="cardPadding">20sp</dimen>
+    <dimen name="cardRadius">15sp</dimen>
+</resources>

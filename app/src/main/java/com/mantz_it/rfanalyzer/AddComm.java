@@ -5,7 +5,11 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class AddComm extends AppCompatActivity {
 
@@ -38,5 +42,24 @@ public class AddComm extends AppCompatActivity {
                 return false;
             }
         });
+
+        Button buttonAddComm = findViewById(R.id.buttonAddComm);
+
+        buttonAddComm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                EditText editText = findViewById(R.id.customNameText);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("name", editText.getText().toString());
+
+                Intent i = new Intent(AddComm.this, HomeActivity.class);
+                i.putExtra("NewComm", bundle);
+
+                startActivity(i);
+            }
+        });
+
     }
 }

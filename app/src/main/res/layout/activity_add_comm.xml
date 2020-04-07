@@ -27,13 +27,58 @@
             android:layout_width="match_parent"
             android:layout_height="30dp" />
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:" />
+
         <EditText
-            android:id="@+id/editText"
-            android:layout_width="202dp"
+            android:id="@+id/customNameText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Frequency"
-            android:inputType="numberDecimal" />
+            android:hint="Custom Name"
+            android:inputType="textPersonName" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frequency Range" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Frequency 1"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="to" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Frequency 2"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
@@ -85,7 +130,7 @@
             android:id="@+id/buttonAddComm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Comm" />
+            android:text="Start Monitoring" />
 
 
     </LinearLayout>
