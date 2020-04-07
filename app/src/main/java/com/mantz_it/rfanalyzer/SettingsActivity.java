@@ -48,6 +48,7 @@ public class SettingsActivity extends AppCompatActivity {
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.replace(android.R.id.content, settingsFragment);
 		fragmentTransaction.commit();
+
 	}
 
 	@Override

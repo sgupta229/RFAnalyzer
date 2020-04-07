@@ -30,9 +30,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                         //overridePendingTransition(0,0);
                         return true;
                     case R.id.addComm:
+
                         break;
                     case R.id.settings:
-                        break;
+                        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                        return true;
                     default:
                         break;
                 }
