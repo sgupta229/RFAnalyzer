@@ -30,7 +30,7 @@
         android:layout_gravity="right"
         android:backgroundTint="@color/redPrimary"
         android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
-        android:onClick="sendMessage"/>
+        />
 
         <ImageButton
             android:id="@+id/AM_loc"
@@ -40,7 +40,9 @@
             android:src="@drawable/ic_location_on_24px"
             android:layout_gravity="right"
             android:layout_toLeftOf="@id/AM_btn"
-            android:layout_marginRight = "40dp"/>
+            android:layout_marginRight = "40dp"
+            android:onClick="goToMap" />
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -68,7 +70,8 @@
             android:layout_gravity="right"
             android:backgroundTint="@color/greenPrimary"
             android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
-            android:onClick="sendMessage"/>
+            android:onClick="goToMap"
+            />
 
         <ImageButton
             android:id="@+id/narrow_FM_loc"
@@ -106,7 +109,7 @@
             android:layout_gravity="right"
             android:backgroundTint="@color/greenPrimary"
             android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
-            android:onClick="sendMessage"/>
+            />
 
         <ImageButton
             android:id="@+id/wide_FM_loc"

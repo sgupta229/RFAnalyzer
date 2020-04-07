@@ -263,5 +263,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA</sm
 Get the source code of the app here on <a href=https://github.com/demantz/RFAnalyzer>GitHub</a>!
 ]]></string>
     <string name="addComm">Add Comm Method Details</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

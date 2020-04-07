@@ -40,7 +40,26 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 return false;
             }
         });
+
     }
+
+    public void goToMap(View view) {
+        ImageButton AMLoc = (ImageButton)findViewById(R.id.AM_loc);
+        AMLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            }
+        });
+        ImageButton FMLoc = findViewById(R.id.narrow_FM_loc);
+        FMLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            }
+        });
+    }
+
 
     @Override
     public void onClick(View v) {
