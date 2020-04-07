@@ -64,25 +64,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(ftBragg).title("Fort Bragg"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ftBragg));
 
-        addHeatMap();
-    }
-
-    private void addHeatMap(){
-        List<LatLng> list = null;
-
-        // Get the data: latitude/longitude positions of police stations.
-        try {
-            list = readItems(R.raw.data);
-        } catch (JSONException e) {
-            Toast.makeText(getApplicationContext(), "Problem reading list of locations.", Toast.LENGTH_LONG).show();
-        }
-
-        // Create a heat map tile provider, passing it the latlngs of the police stations.
-        mProvider = new HeatmapTileProvider.Builder()
-                .data(list)
-                .build();
-
-        mProvider.setRadius(100);
 
         int[] colors = {
                 //Color.rgb(102, 225, 0), // green
@@ -97,7 +78,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Gradient gradient = new Gradient(colors, startPoints);
 
-        mProvider.setGradient(gradient);
+        int[] colors2 = {
+                Color.rgb(102, 225, 0), // green
+                Color.rgb(255, 0, 0)    // red
+        };
+
+        float[] startPoints2 = {
+                0.2f, 1f
+        };
+        Gradient gradient2 = new Gradient(colors2, startPoints2);
+
+
+        addHeatMap(R.raw.data, gradient);
+        addHeatMap(R.raw.data2, gradient2);
+    }
+
+    private void addHeatMap(int r, Gradient g){
+        List<LatLng> list = null;
+
+        // Get the data: latitude/longitude positions of police stations.
+        try {
+            list = readItems(r);
+        } catch (JSONException e) {
+            Toast.makeText(getApplicationContext(), "Problem reading list of locations.", Toast.LENGTH_LONG).show();
+        }
+
+        // Create a heat map tile provider, passing it the latlngs of the police stations.
+        mProvider = new HeatmapTileProvider.Builder()
+                .data(list)
+                .build();
+
+        mProvider.setRadius(100);
+
+        mProvider.setGradient(g);
 
         // Add a tile overlay to the map, using the heat map tile provider.
         mMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
