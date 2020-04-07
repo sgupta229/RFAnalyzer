@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddComm">
+
+    <LinearLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/add_comm_TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addComm"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:typeface="normal"
+            tools:text="Add Comm Details" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Frequency"
+            android:inputType="numberDecimal" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category" />
+
+            <RadioButton
+                android:id="@+id/radio_UHF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UHF" />
+
+            <RadioButton
+                android:id="@+id/radio_VHF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VHF" />
+
+            <RadioButton
+                android:id="@+id/radio_HF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HF" />
+
+            <RadioButton
+                android:id="@+id/radio_SATCOM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SATCOM" />
+
+        </RadioGroup>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <Button
+            android:id="@+id/buttonAddComm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Comm" />
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav" />
+
+
+</RelativeLayout>
