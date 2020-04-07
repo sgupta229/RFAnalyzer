@@ -2,18 +2,37 @@ package com.mantz_it.rfanalyzer;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.TileOverlayOptions;
+import com.google.maps.android.heatmaps.Gradient;
+import com.google.maps.android.heatmaps.HeatmapTileProvider;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private MapView mMapView;
+    private View mView;
+    private HeatmapTileProvider mProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +57,65 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng ftBragg = new LatLng(35.1415, -79.0080);
+        mMap.addMarker(new MarkerOptions().position(ftBragg).title("Fort Bragg"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ftBragg));
+
+        addHeatMap();
+    }
+
+    private void addHeatMap(){
+        List<LatLng> list = null;
+
+        // Get the data: latitude/longitude positions of police stations.
+        try {
+            list = readItems(R.raw.data);
+        } catch (JSONException e) {
+            Toast.makeText(getApplicationContext(), "Problem reading list of locations.", Toast.LENGTH_LONG).show();
+        }
+
+        // Create a heat map tile provider, passing it the latlngs of the police stations.
+        mProvider = new HeatmapTileProvider.Builder()
+                .data(list)
+                .build();
+
+        mProvider.setRadius(100);
+
+        int[] colors = {
+                //Color.rgb(102, 225, 0), // green
+                //Color.rgb(255, 0, 0)    // red
+                Color.rgb(0, 0, 153),
+                Color.rgb(102, 0, 102)
+        };
+
+        float[] startPoints = {
+                0.2f, 1f
+        };
+
+        Gradient gradient = new Gradient(colors, startPoints);
+
+        mProvider.setGradient(gradient);
+
+        // Add a tile overlay to the map, using the heat map tile provider.
+        mMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+
+    }
+
+
+    private ArrayList<LatLng> readItems(int resource) throws JSONException {
+        ArrayList<LatLng> list = new ArrayList<LatLng>();
+        InputStream inputStream = getResources().openRawResource(resource);
+        String json = new Scanner(inputStream).useDelimiter("\\A").next();
+        JSONArray array = new JSONArray(json);
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            double lat = object.getDouble("lat");
+            double lng = object.getDouble("lng");
+            list.add(new LatLng(lat, lng));
+        }
+        return list;
     }
 }
