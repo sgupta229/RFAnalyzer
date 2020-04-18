@@ -8,9 +8,7 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <!-- Read external storage is used for the FileSource -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Read external storage is used for the FileSource -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Write external storage is used to write recordings and log files to the SD card -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Internet is used to connect to local and remote rtl_tcp instances -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Declare permissions to read and write the bookmarks database -->
@@ -40,8 +38,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".MapsActivitySahil"
+            android:label="@string/title_activity_maps_sahil"></activity>
+        <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".AddComm" />
         <activity android:name=".HomeActivity">
             <intent-filter>

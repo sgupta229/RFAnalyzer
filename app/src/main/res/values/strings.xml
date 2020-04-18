@@ -264,5 +264,6 @@ Get the source code of the app here on <a href=https://github.com/demantz/RFAnal
 ]]></string>
     <string name="addComm">Add Comm Method Details</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps_sahil">Map</string>
 
 </resources>
